@@ -1,17 +1,37 @@
 import React, { Component } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Searchbar from '../Searchbar';
 import ImageGallery from '../ImageGallery';
-// import Button from '../Button';
-// import Loader from '../Loader';
-// import Modal from '../Modal';
 
 class App extends Component {
+  state = {
+    images: '',
+    showModal: false,
+  };
+
+  hendelFormSubmit = images => {
+    this.setState({ images });
+  };
+
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+    }));
+  };
+
   render() {
+    const { showModal, images } = this.state;
     return (
       <>
-        <Searchbar />
-        <ImageGallery />
+        <Searchbar onFormSubmit={this.hendelFormSubmit} />
+        <ImageGallery
+          images={images}
+          onToggleModal={this.toggleModal}
+          showModal={showModal}
+        />
+        <ToastContainer autoClose={3000} />
       </>
     );
   }

@@ -6,19 +6,19 @@ import css from './Searchbar.module.css';
 
 class Searchbar extends Component {
   state = {
-    images: '',
+    image: '',
   };
 
   hendelImagesChange = event => {
-    this.setState({ images: event.currentTarget.value.toLowerCase() });
+    this.setState({ image: event.currentTarget.value.toLowerCase() });
   };
   hendelSubmit = event => {
     event.preventDefault();
-    if (this.state.images.trim() === '') {
+    if (this.state.image.trim() === '') {
       return toast.error('Please enter a name to search!');
     }
-    this.props.onFormSubmit(this.state.images);
-    this.setState({ images: '' });
+    this.props.onFormSubmit(this.state.image);
+    this.setState({ image: '' });
   };
   render() {
     return (
@@ -35,7 +35,7 @@ class Searchbar extends Component {
             autoFocus
             placeholder="Search images and photos"
             onChange={this.hendelImagesChange}
-            value={this.state.images}
+            value={this.state.image}
           />
         </form>
       </header>

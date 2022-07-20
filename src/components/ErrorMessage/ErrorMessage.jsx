@@ -9,4 +9,5 @@ const ErrorMessage = ({ images }) => {
     </div>
   );
 };
+
 export default ErrorMessage;

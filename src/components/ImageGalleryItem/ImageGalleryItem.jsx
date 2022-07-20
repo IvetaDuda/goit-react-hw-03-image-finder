@@ -4,14 +4,14 @@ const ImageGalleryItem = ({
   tags,
   webformatURL,
   largeImageURL,
-  onHandleImgOpenClick,
+  handleImgOpenClick,
 }) => {
   return (
-    <li className={css.ImageGalleryItem}>
+    <li className={css.ImageGalleryItem} id="card">
       <img
         className={css.ImageGalleryItemImage}
         onClick={() => {
-          onHandleImgOpenClick(largeImageURL, tags);
+          handleImgOpenClick(largeImageURL, tags);
         }}
         src={webformatURL}
         alt={tags}

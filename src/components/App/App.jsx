@@ -68,7 +68,7 @@ class App extends Component {
   }
 
   hendelFormSubmit = image => {
-    this.setState({ image });
+    this.setState({ image, page: 1, images: [] });
   };
 
   toggleModal = () => {
@@ -88,7 +88,17 @@ class App extends Component {
   };
 
   render() {
-    const { image, showModal, images, largeImageUrl, tag, status } = this.state;
+    const {
+      image,
+      showModal,
+      images,
+      largeImageUrl,
+      tag,
+      status,
+      page,
+      totalImages,
+    } = this.state;
+    const countPages = Math.ceil(totalImages / 12);
 
     return (
       <>
@@ -104,7 +114,7 @@ class App extends Component {
             handleImgOpenClick={this.handleImgOpenClick}
           />
         )}
-        {status === 'resolved' && (
+        {status === 'resolved' && page < countPages && (
           <Button onLoadMoreButtonClick={this.LoadMoreButtonClick} />
         )}
         {showModal && (
